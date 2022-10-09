@@ -11,8 +11,8 @@
             <div class="card">
                 <div class="card-body">
 
-                    <h4 class="card-title">Add Supplier</h4><br>
-                    <form method="POST" action="{{ route('store.supplier') }}" id="myForm">
+                    <h4 class="card-title">Add Customer</h4><br>
+                    <form method="POST" action="{{ route('store.customer') }}" id="myForm" enctype="multipart/form-data">
                         @csrf
 
 
@@ -20,6 +20,18 @@
                         <label for="name-input" class="col-sm-2 col-form-label">Name</label>
                         <div class="form-group col-sm-10">
                             <input type="text" name="name"class="form-control"id="name-input">
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label for="customer_image" class="col-sm-2 col-form-label">Image</label>
+                        <div class="form-group col-sm-10">
+                            <input type="file" name="customer_image"class="form-control" id="customer_image">
+                        </div>
+                    </div>
+                    <div class="row mb-2">
+                        <label for="showImage" class="col-sm-2 col-form-label"></label>
+                        <div class="col-sm-10">
+                            <img id="showImage" class="rounded avatar-lg" src="{{ url('upload/no_image.jpg') }}" alt="Card image cap">
                         </div>
                     </div>
                     <div class="row mb-2">
@@ -40,7 +52,7 @@
                             <input type="text" name="address"class="form-control"id="address-input">
                         </div>
                     </div>
-                        <input type="submit" class="btn btn-success waves-effect waves-light" value="Add Supplier">
+                        <input type="submit" class="btn btn-success waves-effect waves-light" value="Add Customer">
                     </form><!-- end row -->
                 </div>
             </div>
@@ -52,10 +64,27 @@
 </div>
 
 <script type="text/javascript">
+
+    $(document).ready(function(){
+        $('#customer_image').change(function(e){
+            var reader = new FileReader();
+            reader.onload = function(e){
+                $('#showImage').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(e.target.files['0']);
+        });
+    });
+
+</script>
+
+<script type="text/javascript">
     $(document).ready(function (){
         $('#myForm').validate({
             rules: {
                 name: {
+                    required : true,
+                },
+                customer_image: {
                     required : true,
                 },
                 mobile_number: {
@@ -70,16 +99,19 @@
             },
             messages :{
                 name: {
-                    required : 'Please Enter Supplier`s Name',
+                    required : 'Please Enter Customer`s Name',
+                },
+                customer_image: {
+                    required : 'Please select one Image',
                 },
                 mobile_number: {
-                    required : 'Please Enter Supplier`s Mobile Number',
+                    required : 'Please Enter Customer`s Mobile Number',
                 },
                 email: {
-                    required : 'Please Enter Supplier`s Email',
+                    required : 'Please Enter Customer`s Email',
                 },
                 address: {
-                    required : 'Please Enter Supplier`s Address',
+                    required : 'Please Enter Customer`s Address',
                 },
             },
             errorElement : 'span',
