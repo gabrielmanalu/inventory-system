@@ -43,6 +43,8 @@ class UnitController extends Controller
         $unit_id = $request->id;
         Unit::findorFail($unit_id)->update([
             'name' => $request->name,
+            'updated_by' => Auth::user()->id,
+            'updated_at' => Carbon::now(),
         ]);
 
         $notification = array(

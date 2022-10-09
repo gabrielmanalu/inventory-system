@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Pos\CategoryController;
 use App\Http\Controllers\Pos\SupplierController;
 use App\Http\Controllers\Pos\CustomerController;
 use App\Http\Controllers\Pos\UnitController;
@@ -59,6 +60,15 @@ Route::controller(UnitController::class)->group(function () {
     Route::get('/unit/edit{id}', 'unitEdit')->name('unit.edit');
     Route::post('/update/unit', 'updateUnit')->name('update.unit');
     Route::get('/unit/delete{id}', 'unitDelete')->name('unit.delete');
+});
+
+Route::controller(CategoryController::class)->group(function () {
+    Route::get('/category/all', 'categoryAll')->name('category.all');
+    Route::get('/category/add', 'categoryAdd')->name('category.add');
+    Route::post('/store/category', 'storeCategory')->name('store.category');
+    Route::get('/category/edit{id}', 'categoryEdit')->name('category.edit');
+    Route::post('/update/category', 'updateCategory')->name('update.category');
+    Route::get('/category/delete{id}', 'categoryDelete')->name('category.delete');
 });
 
 Route::get('/dashboard', function () {
