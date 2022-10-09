@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Pos\SupplierController;
 use App\Http\Controllers\Pos\CustomerController;
+use App\Http\Controllers\Pos\UnitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,15 @@ Route::controller(CustomerController::class)->group(function () {
     Route::get('/customer/edit{id}', 'customerEdit')->name('customer.edit');
     Route::post('/update/customer', 'updateCustomer')->name('update.customer');
     Route::get('/customer/delete{id}', 'customerDelete')->name('customer.delete');
+});
+
+Route::controller(UnitController::class)->group(function () {
+    Route::get('/unit/all', 'unitAll')->name('unit.all');
+    Route::get('/unit/add', 'unitAdd')->name('unit.add');
+    Route::post('/store/unit', 'storeUnit')->name('store.unit');
+    Route::get('/unit/edit{id}', 'unitEdit')->name('unit.edit');
+    Route::post('/update/unit', 'updateUnit')->name('update.unit');
+    Route::get('/unit/delete{id}', 'unitDelete')->name('unit.delete');
 });
 
 Route::get('/dashboard', function () {
