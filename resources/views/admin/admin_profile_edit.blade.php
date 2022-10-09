@@ -45,7 +45,7 @@
                     <div class="row mb-2">
                         <label for="showImage" class="col-sm-2 col-form-label"></label>
                         <div class="col-sm-10">
-                            <img id="showImage" class="rounded avatar-lg" src="{{ asset('backend/assets/images/small/img-5.jpg') }}" alt="Card image cap">
+                            <img id="showImage" class="rounded avatar-lg" src="{{ (!empty($editData->profile_image))?url('upload/admin_images/'.$editData->profile_image):url('upload/no_image.jpg') }}" alt="Card image cap">
                         </div>
                     </div>
                         <input type="submit" class="btn btn-success waves-effect waves-light" value="Update Profile">
@@ -55,10 +55,10 @@
         </div> <!-- end col -->
     </div>
 
-    
+
 </div>
 </div>
- 
+
 <script type="text/javascript">
 
     $(document).ready(function(){

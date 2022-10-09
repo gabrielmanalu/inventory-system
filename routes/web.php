@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Pos\SupplierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,15 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/update/password', 'updatePassword')->name('update.password');
     });
 
+});
+
+Route::controller(SupplierController::class)->group(function () {
+    Route::get('/supplier/all', 'supplierAll')->name('supplier.all');
+    Route::get('/supplier/add', 'supplierAdd')->name('supplier.add');
+    Route::post('/store/supplier', 'storeSupplier')->name('store.supplier');
+    Route::get('/supplier/edit{id}', 'supplierEdit')->name('supplier.edit');
+    Route::post('/update/supplier', 'updateSupplier')->name('update.supplier');
+    Route::get('/supplier/delete{id}', 'supplierDelete')->name('supplier.delete');
 });
 
 Route::get('/dashboard', function () {
