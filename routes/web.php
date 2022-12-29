@@ -5,6 +5,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Pos\CategoryController;
 use App\Http\Controllers\Pos\SupplierController;
 use App\Http\Controllers\Pos\CustomerController;
+use App\Http\Controllers\Pos\ProductController;
 use App\Http\Controllers\Pos\UnitController;
 
 /*
@@ -69,6 +70,15 @@ Route::controller(CategoryController::class)->group(function () {
     Route::get('/category/edit{id}', 'categoryEdit')->name('category.edit');
     Route::post('/update/category', 'updateCategory')->name('update.category');
     Route::get('/category/delete{id}', 'categoryDelete')->name('category.delete');
+});
+
+Route::controller(ProductController::class)->group(function () {
+    Route::get('/product/all', 'productAll')->name('product.all');
+    // Route::get('/category/add', 'categoryAdd')->name('category.add');
+    // Route::post('/store/category', 'storeCategory')->name('store.category');
+    // Route::get('/category/edit{id}', 'categoryEdit')->name('category.edit');
+    // Route::post('/update/category', 'updateCategory')->name('update.category');
+    // Route::get('/category/delete{id}', 'categoryDelete')->name('category.delete');
 });
 
 Route::get('/dashboard', function () {
