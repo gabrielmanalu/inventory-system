@@ -74,11 +74,11 @@ Route::controller(CategoryController::class)->group(function () {
 
 Route::controller(ProductController::class)->group(function () {
     Route::get('/product/all', 'productAll')->name('product.all');
-    // Route::get('/category/add', 'categoryAdd')->name('category.add');
-    // Route::post('/store/category', 'storeCategory')->name('store.category');
-    // Route::get('/category/edit{id}', 'categoryEdit')->name('category.edit');
-    // Route::post('/update/category', 'updateCategory')->name('update.category');
-    // Route::get('/category/delete{id}', 'categoryDelete')->name('category.delete');
+    Route::get('/product/add', 'productAdd')->name('product.add');
+    Route::post('/store/product', 'storeProduct')->name('store.product');
+    Route::get('/product/edit{id}', 'productEdit')->name('product.edit');
+    Route::post('/update/product', 'updateProduct')->name('update.product');
+    Route::get('/product/delete{id}', 'productDelete')->name('product.delete');
 });
 
 Route::get('/dashboard', function () {

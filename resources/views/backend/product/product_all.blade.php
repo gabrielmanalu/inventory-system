@@ -19,7 +19,7 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <a href="{{ route('supplier.add') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float: right;"> Add Supplier </a>
+                        <a href="{{ route('product.add') }}" class="btn btn-dark btn-rounded waves-effect waves-light" style="float: right;"> Add Product </a>
                         <br><br>
 
                         <h4 class="card-title">Product All Data</h4>
@@ -41,12 +41,12 @@
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ $item->supplier_id }}</td>
-                                    <td>{{ $item->unit_id }}</td>
-                                    <td>{{ $item->category_id }}</td>
-                                    <td><a href="{{ route('supplier.edit', $item->id) }}" class="btn btn-info sm" title="Edit Data" >
+                                    <td>{{ $item['supplier']['name'] }}</td>
+                                    <td>{{ $item['unit']['name'] }}</td>
+                                    <td>{{ $item['category']['name'] }}</td>
+                                    <td><a href="{{ route('product.edit', $item->id) }}" class="btn btn-info sm" title="Edit Data" >
                                         <i class="fas fa-edit"></i> </a>
-                                        <a href="{{ route('supplier.delete', $item->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete">
+                                        <a href="{{ route('product.delete', $item->id) }}" class="btn btn-danger sm" title="Delete Data" id="delete">
                                         <i class="fas fa-trash-alt"></i> </a>
                                     </td>
                                 </tr>
