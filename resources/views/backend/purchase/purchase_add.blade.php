@@ -41,7 +41,7 @@
                             <div class="md-3">
                                 <label for="category_id" class="form-label">Category Name</label>
                                 <select id="category_id" name="category_id" class="form-select" aria-label="Default select example">
-                                    <option selected="" value="">Select Category</option>
+                                    <option selected="" value="">Open this to select menu</option>
                                     </select>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
                             <div class="md-3">
                                 <label for="product_id" class="form-label">Product Name</label>
                                 <select id="product_id" name="product_id" class="form-select" aria-label="Default select example">
-                                    <option selected="" value="">Select Product</option>
+                                    <option selected="" value="">Open this to select menu</option>
                                 </select>
                             </div>
                         </div>
@@ -72,23 +72,23 @@
 </div>
 
 <script type="text/javascript">
-  $(function(){
-    $(document).on('change','#supplier_id', function(){
-        var supplier_id = $(this).val();
-        $.ajax({
-            url:"{{ route('get-category') }}",
-            type: "GET",
-            date:{supplier_id:supplier_id},
-            success:function(data){
-                val html = '<option value="">Select Category</option>';
-                $.each(data,function(key,v){
-                    html += '<option value=" '+v.category_id+' "> '+v.category.name+' </option>';
-                });
-                $('#category_id').html(html);
-            }
-        })
+    $(function(){
+        $(document).on('change','#supplier_id',function(){
+            var supplier_id = $(this).val();
+            $.ajax({
+                url:"{{ route('get-category') }}",
+                type: "GET",
+                data:{supplier_id:supplier_id},
+                success:function(data){
+                    var html = '<option value="">Select Category</option>';
+                    $.each(data,function(key,v){
+                        html += '<option value=" '+v.category_id+' "> '+v.category.name+'</option>';
+                    });
+                    $('#category_id').html(html);
+                }
+            })
+        });
     });
-  });
 </script>
 
 @endsection
